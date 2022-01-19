@@ -11,16 +11,16 @@ public class Launcher {
     static boolean isAscending = true;
     static boolean isStrings = true;
     static String outputFileName = "";
-    static String encoding = "utf-8";
     static List<String> inputFileNames = new ArrayList<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         new ParseCommandLine(args).parse();
 
-        System.out.println(isAscending);
-        System.out.println(isStrings);
-        System.out.println(outputFileName);
-        System.out.println(inputFileNames);
+        ReadWriteFiles RWFiles = new ReadWriteFiles(inputFileNames,outputFileName);
+        System.out.println(RWFiles);
+
+        RWFiles.readFile(isStrings);
+
     }
 }
